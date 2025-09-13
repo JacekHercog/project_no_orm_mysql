@@ -1,0 +1,21 @@
+# Run scripts:
+# Run main application: pipenv run python app/main.py
+# Run tests: pipenv run pytest
+# Run tests with coverage and HTML report: pipenv run pytest --cov=app --cov=tests --cov-report=html --cov-report=term-missing
+# View HTML coverage report: open htmlcov/index.html
+
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+mysql-connector-python = "*"
+inflection = "*"
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+
+[requires]
+python_version = "3.12"
