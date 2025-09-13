@@ -3,6 +3,7 @@
 # Run tests: pipenv run pytest
 # Run tests with coverage and HTML report: pipenv run pytest --cov=app --cov=tests --cov-report=html --cov-report=term-missing
 # View HTML coverage report: open htmlcov/index.html
+# Run MyPy type checking: pipenv run mypy --explicit-package-bases .
 
 [[source]]
 url = "https://pypi.org/simple"
@@ -16,6 +17,7 @@ inflection = "*"
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.12"

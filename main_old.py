@@ -1,29 +1,29 @@
-from persistence.connection import MySQLConnectionPoolBuilder
+from app.persistence.connection import MySQLConnectionPoolBuilder
 
 def main() -> None:
     connection_pool = MySQLConnectionPoolBuilder.builder().port(3307).user('user').build()
 
     # BEZ CONTEXT MANAGERA
-    # conn1 = connection_pool.get_connection()
-    # if conn1.is_connected():
-    #     cursor = conn1.cursor()
-    #     create_teams_sql = '''
-    #             create table if not exists teams (
-    #                 id integer primary key auto_increment,
-    #                 name varchar(50) not null,
-    #                 points integer default 0
-    #             )
-    #         '''
-    #     cursor.execute(create_teams_sql)
-    #     cursor.execute('show tables;')
-    #     print(cursor.fetchall())
+    conn1 = connection_pool.get_connection()
+    if conn1.is_connected():
+        cursor = conn1.cursor()
+        create_teams_sql = '''
+                create table if not exists teams (
+                    id integer primary key auto_increment,
+                    name varchar(50) not null,
+                    points integer default 0
+                )
+            '''
+        cursor.execute(create_teams_sql)
+        cursor.execute('show tables;')
+        print(cursor.fetchall())
 
     # Z CONTEXT MANAGEREM
-    # with connection_pool.get_connection() as conn:
-    #     cursor = conn.cursor()
-    #     cursor.execute("insert into teams (name, points) values ('A', 30)")
-    #     # cursor.execute("insert into teams (name, points) values (10, 20, 30)")
-    #     conn.commit()
+    with connection_pool.get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("insert into teams (name, points) values ('A', 30)")
+        # cursor.execute("insert into teams (name, points) values (10, 20, 30)")
+        conn.commit()
 
 
 # ---------------------------------------------------------------------------------
