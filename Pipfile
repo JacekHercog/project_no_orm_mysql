@@ -1,7 +1,8 @@
 # Run scripts:
 # Run main application: pipenv run python app/main.py
-# Run tests: pipenv run pytest
-# Run tests with coverage and HTML report: pipenv run pytest --cov=app --cov=tests --cov-report=html --cov-report=term-missing
+# Run tests (skip integration): pipenv run pytest -m "not integration"
+# Run all tests: pipenv run pytest
+# Run tests with coverage and HTML report: pipenv run pytest --cov=app --cov-report=html --cov-report=term-missing -m "not integration"
 # View HTML coverage report: open htmlcov/index.html
 # Run MyPy type checking: pipenv run mypy --explicit-package-bases .
 
